@@ -1,7 +1,10 @@
 <template>
-  <div v-if="post">
-    <h3>{{ post.title }}</h3>
-    <p>{{ post.body }}</p>
+  <div
+    v-if="post"
+    class="mx-auto mt-10 flex w-full max-w-2xl flex-col items-center gap-5"
+  >
+    <h3 class="text-3xl font-bold text-gray-700">{{ post.title }}</h3>
+    <p class="text-lg text-gray-700">{{ post.body }}</p>
   </div>
 </template>
 
@@ -22,6 +25,5 @@ onMounted(async () => {
     .eq("id", props.id)
     .single();
   post.value = data;
-  console.log(post);
 });
 </script>

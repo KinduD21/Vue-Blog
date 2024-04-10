@@ -1,10 +1,12 @@
 <template>
-  <li>
+  <li class="w-full">
     <router-link v-bind:to="{ name: 'Details', params: { id: post.id } }">
-      <h3>{{ post.title }}</h3>
+      <h3 class="text-3xl font-bold text-gray-700">{{ post.title }}</h3>
     </router-link>
-    <p>{{ snippet }}</p>
-    <span v-for="tag in post.tags.split(' ')" :key="tag">{{ " #" + tag }}</span>
+    <p class="mb-2 mt-5 text-lg text-gray-700">{{ snippet }}</p>
+    <span v-for="tag in post.tags.split(' ')" :key="tag" class="text-base">{{
+      " #" + tag
+    }}</span>
   </li>
 </template>
 

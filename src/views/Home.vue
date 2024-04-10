@@ -1,6 +1,5 @@
 <template>
-  <div class="flex flex-col gap-4">
-    <h1>Home</h1>
+  <div class="mt-10 flex flex-col gap-4">
     <div v-if="posts.length">
       <PostList v-if="showPosts" v-bind:posts="posts" />
     </div>
