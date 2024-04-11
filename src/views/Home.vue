@@ -3,13 +3,14 @@
     <div v-if="posts.length">
       <PostList v-if="showPosts" v-bind:posts="posts" />
     </div>
-    <p v-else>Loading...</p>
+    <Spinner v-else />
     <button v-on:click="showPosts = !showPosts">Toggle posts</button>
   </div>
 </template>
 
 <script setup>
 import PostList from "../components/PostList.vue";
+import Spinner from "../components/Spinner.vue";
 import { ref, onMounted } from "vue";
 import { supabase } from "../lib/supabaseClient";
 
@@ -20,7 +21,10 @@ async function getPosts() {
   posts.value = data;
 }
 
-onMounted(() => {
+onMounted(async () => {
+  await new Promise((resolve) => {
+    setTimeout(resolve, 2000);
+  });
   getPosts();
 });
 
