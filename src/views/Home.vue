@@ -1,11 +1,8 @@
 <template>
-  <div class="mt-10 flex flex-col gap-4">
-    <div v-if="posts.length">
-      <PostList v-if="showPosts" v-bind:posts="posts" />
-    </div>
-    <Spinner v-else />
-    <button v-on:click="showPosts = !showPosts">Toggle posts</button>
+  <div v-if="posts.length" class="mx-auto max-w-2xl">
+    <PostList v-if="showPosts" v-bind:posts="posts" />
   </div>
+  <Spinner v-else class="mt-10" />
 </template>
 
 <script setup>
@@ -19,11 +16,14 @@ const posts = ref([]);
 async function getPosts() {
   const { data } = await supabase.from("posts").select();
   posts.value = data;
+  posts.value.forEach((post) => {
+    post.tags = JSON.parse(post.tags);
+  });
 }
 
 onMounted(async () => {
   await new Promise((resolve) => {
-    setTimeout(resolve, 2000);
+    setTimeout(resolve, 1000);
   });
   getPosts();
 });

@@ -22,7 +22,7 @@ let post = ref(null);
 
 onMounted(async () => {
   await new Promise((resolve) => {
-    setTimeout(resolve, 2000);
+    setTimeout(resolve, 1000);
   });
 
   const { data } = await supabase
