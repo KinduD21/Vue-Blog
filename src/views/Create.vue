@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="handleSubmit" class="mx-auto max-w-lg text-left">
+  <form @submit.prevent="addPost" class="mx-auto max-w-lg text-left">
     <label
       class="relative mb-2.5 mt-8 inline-block text-xl text-white before:absolute before:-inset-1 before:-z-10 before:block before:-skew-y-2 before:bg-orange-400"
       >Title:</label
@@ -66,7 +66,7 @@ const handleKeydown = () => {
   tag.value = "";
 };
 
-const handleSubmit = async () => {
+const addPost = async () => {
   const post = {
     title: title.value,
     body: body.value,

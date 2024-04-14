@@ -1,11 +1,11 @@
 <template>
-  <li class="w-full">
+  <li class="w-full border-b border-dashed border-gray-400 pb-8">
     <router-link
       v-bind:to="{ name: 'Details', params: { id: post.id } }"
       class="no-underline"
     >
       <h3
-        class="relative mb-2.5 mt-8 inline-block text-xl text-white before:absolute before:-inset-1 before:-z-10 before:block before:-skew-y-2 before:bg-orange-400"
+        class="relative mb-2.5 mt-8 inline-block text-3xl font-bold text-white before:absolute before:-inset-1 before:-z-10 before:block before:-skew-y-2 before:bg-orange-400"
       >
         {{ post.title }}
       </h3>
@@ -27,8 +27,10 @@ const props = defineProps({
 });
 
 const snippet = computed(() => {
-  if (props.post && props.post.body) {
+  if (props.post.body.length > 110) {
     return props.post.body.substring(0, 100) + "....";
+  } else {
+    return props.post.body;
   }
 });
 </script>

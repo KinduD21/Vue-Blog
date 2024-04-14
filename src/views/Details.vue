@@ -1,10 +1,18 @@
 <template>
   <div
     v-if="post"
-    class="mx-auto mt-10 flex w-full max-w-2xl flex-col items-center gap-5"
+    class="ml-8 mr-10 mt-10 flex w-full flex-col items-start gap-5"
   >
-    <h3 class="text-3xl font-bold text-gray-700">{{ post.title }}</h3>
-    <p class="text-lg text-gray-700">{{ post.body }}</p>
+    <h3
+      class="relative mb-2.5 mt-8 inline-block text-3xl font-bold text-white before:absolute before:-inset-1 before:-z-10 before:block before:-skew-y-2 before:bg-orange-400"
+    >
+      {{ post.title }}
+    </h3>
+    <p
+      class="my-3 ml-5 border-b border-dashed border-gray-400 pb-8 text-lg text-gray-700"
+    >
+      {{ post.body }}
+    </p>
   </div>
   <Spinner v-else class="mt-10" />
 </template>

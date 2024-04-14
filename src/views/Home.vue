@@ -1,5 +1,5 @@
 <template>
-  <div v-if="posts.length" class="mx-auto max-w-2xl">
+  <div v-if="posts.length" class="max-w-3xl">
     <PostList v-if="showPosts" v-bind:posts="posts" />
   </div>
   <Spinner v-else class="mt-10" />
