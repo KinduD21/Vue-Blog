@@ -1,5 +1,5 @@
 <template>
-  <header class="m-10 mx-auto flex items-center justify-between px-5">
+  <header class="m-10 mx-auto flex items-center justify-between pl-5 pr-10">
     <h1 class="text-5xl font-bold text-gray-300">The Dojo Blog</h1>
     <nav>
       <router-link
