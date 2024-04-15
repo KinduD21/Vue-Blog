@@ -26,13 +26,9 @@ const props = defineProps({
   id: String,
 });
 
-let post = ref(null);
+const post = ref(null);
 
 onMounted(async () => {
-  await new Promise((resolve) => {
-    setTimeout(resolve, 1000);
-  });
-
   const { data } = await supabase
     .from("posts")
     .select()

@@ -1,6 +1,7 @@
 <template>
-  <div v-if="posts.length" class="max-w-3xl">
-    <PostList v-if="showPosts" v-bind:posts="posts" />
+  <div v-if="posts.length" class="grid grid-cols-3 gap-5">
+    <PostList :posts="posts" class="col-span-2" />
+    <TagCloud :posts="posts" class="col-span-1" />
   </div>
   <Spinner v-else class="mt-10" />
 </template>
@@ -8,22 +9,14 @@
 <script setup>
 import PostList from "../components/PostList.vue";
 import Spinner from "../components/Spinner.vue";
+import TagCloud from "../components/TagCloud.vue";
 import { ref, onMounted } from "vue";
-import { supabase } from "../lib/supabaseClient";
+import getPosts from "../composables/getPosts.js";
 
 const posts = ref([]);
 
-async function getPosts() {
-  const { data } = await supabase.from("posts").select();
-  posts.value = data;
-  posts.value.forEach((post) => {
-    post.tags = JSON.parse(post.tags);
-  });
-}
-
 onMounted(async () => {
-  getPosts();
+  const fetchedPosts = await getPosts();
+  posts.value = fetchedPosts;
 });
-
-const showPosts = ref(true);
 </script>
