@@ -1,13 +1,15 @@
-import { supabase } from "../lib/supabaseClient";
 import { ref } from "vue";
+import { projectFirestore } from "../firebase/config";
 
 export default async function getPosts() {
   const posts = ref([]);
 
-  const { data } = await supabase.from("posts").select();
-  posts.value = data;
-  posts.value.forEach((post) => {
-    post.tags = JSON.parse(post.tags);
+  const res = await projectFirestore
+    .collection("posts")
+    .orderBy("createdAt")
+    .get();
+  posts.value = res.docs.map((doc) => {
+    return { ...doc.data(), id: doc.id };
   });
   return posts.value;
 }

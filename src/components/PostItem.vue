@@ -1,5 +1,5 @@
 <template>
-  <li class="w-full border-b border-dashed border-gray-400 pb-8">
+  <li class="w-full border-b border-dashed border-gray-300 pb-8">
     <router-link
       v-bind:to="{ name: 'Details', params: { id: post.id } }"
       class="no-underline"
