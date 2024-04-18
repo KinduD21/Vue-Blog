@@ -48,6 +48,7 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { projectFirestore, timestamp } from "../firebase/config";
 
 const router = useRouter();
 
@@ -70,13 +71,12 @@ const addPost = async () => {
     title: title.value,
     body: body.value,
     tags: tags.value,
+    createdAt: timestamp(),
   };
 
-  await supabase
-    .from("posts")
-    .insert(post)
-    .then(() => {
-      router.push("/");
-    });
+  const res = await projectFirestore
+    .collection("posts")
+    .add(post)
+    .then(() => router.push("/"));
 };
 </script>
