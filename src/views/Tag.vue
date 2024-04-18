@@ -1,5 +1,8 @@
 <template>
-  <div v-if="posts.length" class="grid grid-cols-3 gap-5">
+  <div
+    v-if="posts.length"
+    class="grid grid-cols-3 gap-5 max-lg:mx-5 max-lg:flex max-lg:flex-col-reverse"
+  >
     <PostList :posts="postsWithTag" class="col-span-2" />
     <TagCloud :posts="posts" class="col-span-1" />
   </div>

@@ -5,7 +5,7 @@
     >
       Tags
     </h3>
-    <div v-for="tag in tags" :key="tag" class="inline-block p-2.5">
+    <span v-for="tag in tags" :key="tag" class="inline-block p-2.5">
       <router-link
         :to="{ name: 'Tag', params: { tag: tag } }"
         class="text-lg text-gray-400"
@@ -13,7 +13,7 @@
       >
         #{{ tag }}</router-link
       >
-    </div>
+    </span>
   </div>
 </template>
 

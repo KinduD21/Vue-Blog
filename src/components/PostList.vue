@@ -1,5 +1,7 @@
 <template>
-  <ul class="mx-auto ml-8 mr-10 flex w-full flex-col items-center gap-5">
+  <ul
+    class="mx-auto ml-8 mr-10 flex w-full flex-col items-center gap-5 max-lg:mx-0"
+  >
     <PostItem v-for="post in posts" v-bind:key="post.id" v-bind:post="post" />
   </ul>
 </template>
